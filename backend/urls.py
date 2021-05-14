@@ -14,8 +14,13 @@ urlpatterns = [
     path('create-class/<int:pk>/', views.classview, name="createView"),
     path('userinfo/', views.userinfo, name="userinfo"),
     path('user-class/', views.userclass, name="userinfo"),
-    path('Works/',views.Works,name="Works"),
-    path('Addworks/<int:pk>/',views.Addworks,name="Addworks")
+    path('Works/<int:pk>/',views.Works,name="Works"),
+    path('Addworks/<int:pk>/',views.Addworks,name="Addworks"),
+    path('Submitwork/<int:pk>/',views.Submitwork,name="Submitwork"),
+    path('StudentWork/<int:pk>/',views.StudentWork,name="StudentWork"),
+    path('getresponses/<int:pk>/',views.getresponses,name='getresponse')
+ 
+   
 
 ]
 

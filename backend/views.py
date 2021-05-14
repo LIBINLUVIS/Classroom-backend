@@ -6,11 +6,11 @@ from rest_framework.response import Response
 from knox.models import AuthToken
 from .serializers import UserSerializer, RegisterSerializer
 from django.contrib.auth import login
-from .models import User,classcreate,Addwork
+from .models import User,classcreate,Addwork,Submitedworks
 from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
-from .serializers import UserSerializer,classcreateSerializer,AddworkSerializer
+from .serializers import UserSerializer,classcreateSerializer,AddworkSerializer,SubmitedWorksSerializer
 from django.contrib.auth.decorators import login_required
 
 
@@ -103,14 +103,7 @@ def userclass(request):
     
     return Response(userclasses)
 
-@api_view(['GET'])
-def Works(request):
-    works=Addwork.objects.all()
-    serializer=AddworkSerializer(works,many=True)
-    return Response(serializer.data)
-
-       
-   
+  
 
 @api_view(['POST'])
 def Addworks(request,pk):
@@ -126,4 +119,62 @@ def Addworks(request,pk):
 
     )
 
+    return Response("Work Created Successfully !!!")
+
+
+
+@api_view(['GET'])
+def Works(request,pk):
+    temp=[]
+    works=Addwork.objects.all()
+    for work in works:
+        if(work.room.id==pk):
+            item=AddworkSerializer(work)
+            temp.append(item.data)
+           
+        else:
+            print("work not founded")
+            
+    return Response(temp)
+
+@api_view(['GET'])
+def Submitwork(request,pk):
+    temp=[]
+    work=Addwork.objects.all()
+    for x in work:
+        if(x.id==pk):
+            res=AddworkSerializer(x)
+            temp.append(res.data)
+            break
+    
+    return Response(temp)
+
+
+@api_view(['POST'])
+def StudentWork(request,pk):
+    user=request.user
+    work=Addwork.objects.all().get(id=pk)
+    data=request.data
+    file=request.data['file']
+    datas=Submitedworks.objects.create(
+        student=user,
+        work=work,
+        Message=data['Message'],
+        file=file
+
+    )
+
     return Response("Work Submited Successfully !!!")
+
+
+@api_view(['GET'])
+def getresponses(request,pk):
+    Responses=[]
+    works=Submitedworks.objects.all()
+    for x in works:
+        if(x.work.id==pk):
+            Res=SubmitedWorksSerializer(x)
+            Responses.append(Res.data)
+      
+    return Response(Responses)
+

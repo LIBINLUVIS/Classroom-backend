@@ -25,6 +25,26 @@ class Addwork(models.Model):
     created=models.DateField(auto_now_add=True)
     file = models.FileField(upload_to=upload_path, null=True, blank=True)
 
+    def __str__(self):
+        return self.discription
+
+
+    
+class Submitedworks(models.Model):
+    Message=models.TextField(max_length=300)
+    student=models.ForeignKey(User,on_delete=models.CASCADE,related_name='student')
+    work=models.ForeignKey(Addwork,on_delete=models.CASCADE)
+    created=models.DateTimeField(auto_now_add=True)
+    file = models.FileField(upload_to='files', null=True, blank=True)
+
+  
+
+
+
+
+
+
+
 
     
     

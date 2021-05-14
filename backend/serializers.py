@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import classcreate,Addwork
+from .models import classcreate,Addwork,Submitedworks
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -25,15 +25,35 @@ class classcreateSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
    
     class Meta:
+
         model=classcreate
         fields = ['username','classname','created','user','id','discription']
 
 
 class AddworkSerializer(serializers.ModelSerializer):
-
     class Meta:
         model=Addwork
         fields = '__all__'
+
+class SubmitedWorksSerializer(serializers.ModelSerializer):
+    student = serializers.CharField(source='student.username', read_only=True)
+    class Meta:
+        model=Submitedworks
+        fields=['student','created','Message','file']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
