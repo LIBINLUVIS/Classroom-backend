@@ -9,7 +9,7 @@ class classcreate(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
     created=models.DateField(auto_now_add=True)
     classname = models.TextField(max_length=100)
-    discription=models.TextField(max_length=200)
+    discription=models.TextField(max_length=200,blank=True,null=True)
     
     def __str__(self):
         return self.classname

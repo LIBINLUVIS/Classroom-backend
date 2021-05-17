@@ -18,7 +18,9 @@ urlpatterns = [
     path('Addworks/<int:pk>/',views.Addworks,name="Addworks"),
     path('Submitwork/<int:pk>/',views.Submitwork,name="Submitwork"),
     path('StudentWork/<int:pk>/',views.StudentWork,name="StudentWork"),
-    path('getresponses/<int:pk>/',views.getresponses,name='getresponse')
+    path('getresponses/<int:pk>/',views.getresponses,name='getresponse'),
+    path('editclass/<int:pk>/',views.updateclass,name='updateclass')
+    
  
    
 

@@ -40,9 +40,7 @@ CORS_ORGIN_ALLOW_ALL=True
 
 
 CORS_ALLOWED_ORIGINS = [
-    
-    "http://localhost:3000",
-   
+"http://localhost:3000",
 ]
 
 # Application definition

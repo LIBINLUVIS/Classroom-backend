@@ -42,7 +42,12 @@ class SubmitedWorksSerializer(serializers.ModelSerializer):
         fields=['student','created','Message','file']
 
 
+class EditClassSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=classcreate
+        fields=['classname','discription']
 
+    
 
 
 
