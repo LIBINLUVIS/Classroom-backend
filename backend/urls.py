@@ -19,11 +19,11 @@ urlpatterns = [
     path('Submitwork/<int:pk>/',views.Submitwork,name="Submitwork"),
     path('StudentWork/<int:pk>/',views.StudentWork,name="StudentWork"),
     path('getresponses/<int:pk>/',views.getresponses,name='getresponse'),
-    path('editclass/<int:pk>/',views.updateclass,name='updateclass')
-    
- 
+    path('editclass/<int:pk>/',views.updateclass,name='updateclass'),
+    path('Joinclass/<int:pk>/',views.Joinclass,name='joinclass'),
+    path('getjoinclass',views.getJoinclass,name='getjoinclass')
    
-
+   
 ]
 
 

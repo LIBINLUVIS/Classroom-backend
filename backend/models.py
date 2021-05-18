@@ -10,6 +10,7 @@ class classcreate(models.Model):
     created=models.DateField(auto_now_add=True)
     classname = models.TextField(max_length=100)
     discription=models.TextField(max_length=200,blank=True,null=True)
+    accessors=models.ManyToManyField(User,related_name='accessors')
     
     def __str__(self):
         return self.classname
@@ -24,6 +25,7 @@ class Addwork(models.Model):
     room=models.ForeignKey(classcreate,on_delete=models.CASCADE)
     created=models.DateField(auto_now_add=True)
     file = models.FileField(upload_to=upload_path, null=True, blank=True)
+    submition=models.TextField(max_length=100,null=True,blank=True)
 
     def __str__(self):
         return self.discription
@@ -39,7 +41,7 @@ class Submitedworks(models.Model):
 
   
 
-
+    
 
 
 

@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework import generics, permissions
 from rest_framework.response import Response
@@ -93,7 +93,7 @@ def userclass(request):
     user_class = classcreate.objects.all()
     userclasses = []
     for x in user_class:
-        if(x.user.id == user_id):
+        if(x.user.id==user_id):
             temp = classcreateSerializer(x)
             userclasses.append(temp.data)
 
@@ -110,6 +110,7 @@ def Addworks(request, pk):
         auther=user,
         room=room,
         discription=data['discription'],
+        submition=data['submition'],
         file=file
 
     )
@@ -185,3 +186,27 @@ def updateclass(request,pk):
     return Response(serializer.data)
 
 
+
+@api_view(['GET'])
+def Joinclass(request,pk):
+  
+    obj=classcreate.objects.all().get(id=pk)
+    obj.accessors.add(request.user)
+    return Response("Joined class Successfully")
+
+@api_view(['GET'])
+def getJoinclass(request):
+    temp=[]
+    obj=classcreate.objects.all()
+    for x in obj:
+        if x.accessors.filter(id=request.user.id).exists():
+            serializer=classcreateSerializer(x)
+            temp.append(serializer.data)
+
+    return Response(temp)
+
+
+
+
+
+    

@@ -7,3 +7,4 @@ from .models import classcreate,Addwork,Submitedworks
 admin.site.register(classcreate)
 admin.site.register(Addwork)
 admin.site.register(Submitedworks)
+
