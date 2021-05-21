@@ -149,6 +149,7 @@ REST_FRAMEWORK = {
 
         'knox.auth.TokenAuthentication',
     ]
+
 }
 
 STATIC_URL = '/static/'

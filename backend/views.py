@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render,get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework import generics, permissions
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from knox.models import AuthToken
 from .serializers import UserSerializer, RegisterSerializer
@@ -63,6 +64,7 @@ def CreateClass(request):
 
 @api_view(['GET'])
 def classes(request):
+    
     classes = classcreate.objects.all()
     serializer = classcreateSerializer(classes, many=True)
     return Response(serializer.data)
