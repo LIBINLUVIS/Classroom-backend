@@ -16,7 +16,7 @@ from rest_framework.settings import api_settings
 
 REST_KNOX = {
   
-  'TOKEN_TTL': timedelta(hours=10),
+  'TOKEN_TTL':None,
 
 }
 import os
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'backend',
     'rest_framework',
     'knox',
+    'datetimeutc',
     
 ]
 
@@ -130,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

@@ -13,7 +13,7 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 from .serializers import UserSerializer, classcreateSerializer, AddworkSerializer, SubmitedWorksSerializer, EditClassSerializer
 from django.contrib.auth.decorators import login_required
-
+import json
 
 # Register API
 
@@ -158,7 +158,8 @@ def StudentWork(request, pk):
         student=user,
         work=work,
         Message=data['Message'],
-        file=file
+        file=file,
+        status=True
 
     )
 
@@ -206,6 +207,25 @@ def getJoinclass(request):
             temp.append(serializer.data)
 
     return Response(temp)
+
+@api_view(['GET'])
+def submitstatus(request):
+    completed_works=[]
+    workstatus=Submitedworks.objects.all()
+    user=request.user.id
+    for x in workstatus:
+        if(x.student.id==user and x.status):
+            if(x.work.id not in completed_works):
+
+                completed_works.append(x.work.id)
+            
+        else:
+            print('no data found')
+
+    result=json.dumps(completed_works)
+
+    return Response(completed_works)
+    
 
 
 

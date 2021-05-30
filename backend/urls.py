@@ -21,7 +21,8 @@ urlpatterns = [
     path('getresponses/<int:pk>/',views.getresponses,name='getresponse'),
     path('editclass/<int:pk>/',views.updateclass,name='updateclass'),
     path('Joinclass/<int:pk>/',views.Joinclass,name='joinclass'),
-    path('getjoinclass',views.getJoinclass,name='getjoinclass')
+    path('getjoinclass',views.getJoinclass,name='getjoinclass'),  #make a / after url if not working
+    path('submitstatus/',views.submitstatus,name='submitstatus')
    
    
 ]
