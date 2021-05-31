@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'datetimeutc',
+    'storages',
     
 ]
 
@@ -161,9 +162,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 #
 
+# AWS Configration
+AWS_ACCESS_KEY_ID = 'AKIAWH3UPC2ZK4TXM547'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'filesmyclassroom'
+AWS_QUERYSTRING_AUTH=False
 
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
 
 
 
