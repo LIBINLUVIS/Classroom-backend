@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
+import django_heroku
 from pathlib import Path
 from datetime import timedelta
 from rest_framework.settings import api_settings
@@ -19,7 +20,7 @@ REST_KNOX = {
   'TOKEN_TTL':None,
 
 }
-import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -173,6 +174,10 @@ AWS_QUERYSTRING_AUTH=False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+django_heroku.settings(locals())
+
 
 
 
