@@ -41,6 +41,7 @@ CORS_ORGIN_ALLOW_ALL=True
 
 CORS_ALLOWED_ORIGINS = [
 "http://localhost:3000",
+"https://tender-curran-752617.netlify.app"
 ]
 
 # Application definition
