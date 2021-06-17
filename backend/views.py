@@ -172,8 +172,11 @@ def getresponses(request, pk):
     works = Submitedworks.objects.all()
     for x in works:
         if(x.work.id == pk):
+            
             Res = SubmitedWorksSerializer(x)
+                
             Responses.append(Res.data)
+    
 
     return Response(Responses)
 
