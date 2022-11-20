@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetimeutc.fields import DateTimeUTCField
-from datetime import datetime
+# from datetimeutc.fields import DateTimeUTCField
+# from datetime import datetime
 
 # Create your models here.
 

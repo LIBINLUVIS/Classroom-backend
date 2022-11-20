@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-import django_heroku
+# import django_heroku
 from pathlib import Path
 from datetime import timedelta
 from rest_framework.settings import api_settings
@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*8_reen5ddlewkyj&m=n6l$qmr=455)wg$+t!y(3i6=%#!4s-f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -59,8 +59,6 @@ INSTALLED_APPS = [
     'backend',
     'rest_framework',
     'knox',
-    'datetimeutc',
-    'storages',
     
 ]
 
@@ -177,7 +175,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 
 
